@@ -70,11 +70,12 @@ public class PullRefreshListView extends ListView {
         mRefreshProgressBar = (ProgressBar) mRefreshHeadView.findViewById(
                 R.id.pull_to_refresh_progress);
         mRefreshImage.setMinimumHeight(IMAGE_VIEW_MIN_HEIGHT);
-
+        mOriginTopPadding = mRefreshHeadView.getPaddingTop();
         mRefreshHeadView.setOnClickListener(mOnclickListener);
         addHeaderView(mRefreshHeadView);
         setOnScrollListener(mScrollListner);
         measureView(mRefreshHeadView);
+        mHeadViewHeight = mRefreshHeadView.getMeasuredHeight();
     }
 
     private void measureView(View view)
@@ -122,6 +123,7 @@ public class PullRefreshListView extends ListView {
     private View mRefreshHeadView;
     private ImageView mRefreshImage;
     private final int IMAGE_VIEW_MIN_HEIGHT = 50;
+    private int mOriginTopPadding, mHeadViewHeight;
     private TextView mRefreshTxt, mRefreshLastUpdateTxt;
     private ProgressBar mRefreshProgressBar;
 }
